@@ -1,34 +1,39 @@
-#ifndef DATATYPE_H
-#define DATATYPE_H
+#ifndef DATATYPE_H  
+#define DATATYPE_H  
 
-#define MAX_USERS 100
-#include <stdbool.h>
+#include <stdbool.h>  
 
-typedef struct {
-    char id[20];
-    char name[50];
+struct Date {  
+    int month, day, year;  
+};  
+
+struct User {  
+    char userId[10];  
+    char name[20];  
+    struct Date dateOfBirth;  
     bool gender;
-    char phone[15];
-    char email[50];
-    char username[30];
-    char password[10];
-    char status[10];
-} User;
-
-typedef struct {
-    char userid[20];
-    float balance;
+    char phone[12];  
+    char email[20];  
     bool status;
-} AccountInfo;
+    char password[20]; 
+};  
 
-typedef struct {
-    char adminname[20];
-    char adminpassword[20];
-} AdminAccountInfo;
+struct Transaction {  
+    char transferId[10];  
+    char receivingId[10];  
+    double amount;  
+    char type[10];  // deposit, withdraw, transfer  
+    char message[50];  
+    struct Date transactionDate;  
+};  
 
-typedef struct {
-    int day, month, year;
-} Date;
+struct AccountInfo {  
+    char userId[20];  
+    float balance;  
+    bool status;
+    char username[10];  
+    char password[10];  
+    struct Transaction transactionHistory[100];
+};  
 
-#endif
-
+#endif // DATATYPE_H
