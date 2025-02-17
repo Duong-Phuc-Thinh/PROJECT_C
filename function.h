@@ -6,35 +6,31 @@
 // Menu chính
 void displayMainMenu();
 
-// Hi?n th? danh sách user
+// Hien thi danh sách nguoi dùng
 void displayUserList();
 
-// Thêm user
+// Thêm nguoi dùng
 void addUser();
 
-// Khóa/M? khóa user
+// Khóa/Mo khóa ngu?i dùng
 void toggleUserStatus();
 
-// Hi?n th? user theo ID
+// Hien thi thông tin nguoi dùng theo ID
 void displayUserDetails(char *userId);
 
-// S?p x?p danh sách user
- void sortUserList();
+// Sap xep danh sách nguoi dùng
+void sortUserList();
 
-// Tìm ki?m user theo tên
+// Tìm kiem nguoi dùng theo tên
 void searchUserByName(char *name);
 
-// Ki?m tra d? li?u user
+// Kiem tra du lieu nguoi dùng
 bool validateUserInput(struct User user);
 
-
-// Luu d? li?u user
+// Luu du lieu nguoi dùng
 void saveUserData();
 
-// Ð?c d? li?u user
+// doc du lieu nguoi dùng
 void loadUserData();
-
-void displayUserDetails(char *userId);
-
 
 #endif // FUNCTION_H
