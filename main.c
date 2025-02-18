@@ -4,7 +4,7 @@
 #include "function.h"
 
 void start(){
-	loadUserData();  // Load d? li?u ngu?i dùng t? file
+	loadUserData();  // Load du lieu nguoi dung tu file
 
     int role, choice;
     while (1) {
@@ -18,55 +18,57 @@ void start(){
         printf("Enter Your Choice: ");
         scanf("%d", &role);
 
-        // Ki?m tra quy?n truy c?p
+        // Kiem tra quyen truy cap
         if (role == 1) {
             char email[50], password[20];
             printf("\nEmail: ");
-            scanf("%s", email);  // Ð? tránh l?i kho?ng tr?ng, có th? thay b?ng fgets
+            scanf("%s", email);  // De tranh loi khoang trong, có the thay bang fgets
             printf("Password: ");
-            scanf("%s", password);  // Cung có th? thay b?ng fgets
+            scanf("%s", password);  // Cung co the thay bang fgets
 
-            // Ki?m tra thông tin dang nh?p c?a Admin
+            // Kiem tra thong tin dang nhap cua Admin
             if (strcmp(email, "thinh@gmail.com") != 0 || strcmp(password, "thinhdaden") != 0) {
                 printf("Login failed! Please try again.\n");
-                continue;  // Quay l?i vòng l?p login
+                continue;  // Quay lai vong lap login
             }
             system("cls");
 
             // Menu Admin
             do {
-                printf("\n*** ADMIN MENU ***\n");
-                printf("============================\n");
-                printf("[1] Add A New User\n");
-                printf("[2] Show All Users\n");
-                printf("[3] Lock (Unlock) A User\n");
-                printf("[4] Search User By Name\n");
-                printf("[5] View User Details By ID\n");
-                printf("[6] Sort User List\n");  
-                printf("[7] Exit\n");
-                printf("============================\n");
-                printf("Enter Your Choice: ");
+			    printf("\n=====================================\n");
+			    printf("          ADMIN MENU                 \n");
+			    printf("=====================================\n");
+			    printf("|  [1] Add A New User               |\n");
+			    printf("|  [2] Show All Users               |\n");
+			    printf("|  [3] Lock/Unlock A User           |\n");
+			    printf("|  [4] Search User By Name          |\n");
+			    printf("|  [5] View User Details By ID      |\n");
+			    printf("|  [6] Sort User List               |\n");
+			    printf("|  [7] Exit                         |\n");
+			    printf("=====================================\n");
+			    printf(" Enter Your Choice: ");
+
                 
-                // X? lý nh?p li?u và ki?m tra
+                // Xu ly nhap lieu và kiem tra
                 if (scanf("%d", &choice) != 1) {
-                    while (getchar() != '\n');  // X? lý ký t? không h?p l? trong b? d?m
+                    while (getchar() != '\n');  // Xu ly ky tu không hop le trong bo dem
                     printf("Invalid input! Please enter a valid number.\n");
-                    continue;  // Quay l?i vòng l?p menu
+                    continue;  // Quay lai vong lap menu
                 }
 
                 switch (choice) {
                     case 1:
                         system("cls");
                         addUser();
-                        saveUserData(); // Thêm ngu?i dùng
+                        saveUserData(); // Them nguoi dung
                         break;
                     case 2:
                         system("cls");
-                        displayUserList();  // Hi?n th? danh sách ngu?i dùng
+                        displayUserList();  // Hien thi danh sach nguoi dung
                         break;
                     case 3:
                         system("cls");
-                        toggleUserStatus();  // Khóa/M? khóa ngu?i dùng
+                        toggleUserStatus();  // Khoa/Mo khoa nguoi dung
                         break;
                     case 4: {
                         char searchName[50];
@@ -81,23 +83,23 @@ void start(){
                         printf("Enter User ID: ");
                         scanf("%s", userId);
                         system("cls");
-                        displayUserDetails(userId);  // Hi?n th? chi ti?t ngu?i dùng theo ID
+                        displayUserDetails(userId);  // Hien thi chi tiet nguoi dung theo ID
                         break;
                     }
                     case 6:
                         system("cls");
-                        sortUserList();  // S?p x?p danh sách ngu?i dùng theo ID
+                        sortUserList();  // Sap xep danh sach nguoi dùng theo ID
                         break;
                     case 7:
                         system("cls");
-                        saveUserData();  // Luu d? li?u ngu?i dùng
+                        saveUserData();  // Luu du lieu nguoi dung
                         printf("Exiting Admin Menu...\n");
-                        return;  // Thoát chuong trình
+                        return;  // Thoat chuong trinh
                     default:
                         printf("Invalid choice! Please try again.\n");
                 }
 
-                // Quay l?i menu chính ho?c thoát chuong trình
+                // Quay lai menu chinh hoac thoat chuong trinh
                 printf("\n[1] Return to Admin Menu\n");
                 printf("[0] Exit\n");
                 int exitChoice;
@@ -112,13 +114,13 @@ void start(){
                     saveUserData();
                     return ;  // Exit the program
                 } else {
-                    system("cls");  // Clear màn hình và quay l?i menu Admin
+                    system("cls");  // Clear màn hinh va quay lai menu Admin
                 }
 
-            } while (choice != 7); // L?p l?i menu cho d?n khi ch?n thoát
+            } while (choice != 7); // Lap lai menu cho den khi chon thoát
         }
         
-        // Ph?n cho User (N?u có yêu c?u sau)
+        // Phan cho User (Neu có yêu cau sau)
         else if (role == 2) {  // User login
     char email[50], phone[12];
     printf("\nEnter Email: ");

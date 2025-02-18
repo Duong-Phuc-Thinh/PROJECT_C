@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "datatype.h"
-#include <ctype.h>  // Thêm thu vi?n này d? s? d?ng isdigit
+#include <ctype.h>  // Them thu vien nay de su dung isdigit
 
 struct User users[100];
 int userCount = 0;
@@ -11,54 +11,53 @@ int userCount = 0;
 
 int isValidUserId(const char *userId) {
     for (int i = 0; i < strlen(userId); i++) {
-        if (isalpha(userId[i])) {  // N?u có ký t? là ch?, tr? v? false
+        if (isalpha(userId[i])) {  // Neu co ky tu la chu, tra ve false
             return 0;
         }
     }
-    return 1;  // N?u t?t c? d?u không ph?i ch?, tr? v? true
+    return 1;  // Neu tat ca dau khong phai chu, tra ve true
 }
 
-// Hàm ki?m tra tên có h?p l? không (không ch?a s?)
+// Ham kiem tra ten co hop le khong (khong chua so)
 int isValidName(const char *name) {
     for (int i = 0; i < strlen(name); i++) {
         if (isdigit(name[i])) {
-            return 0;  // N?u có ký t? s?, tr? v? false
+            return 0;  // Neu co ky tu so, tra ve false
         }
     }
-    return 1;  // N?u t?t c? các ký t? d?u là ch?, tr? v? true
+    return 1;  // Neu tat ca cac ky tu deu la chu, tra ve true
 }
 
-// Hàm ki?m tra s? di?n tho?i có h?p l? không (ch? ch?a s? và không dài quá 12 ký t?)
+// Ham kiem tra so dien thoai có hop le khong (chi chua so va khong dai qua 12 ky tu)
 int isValidPhone(const char *phone) {
-    if (strlen(phone) > 12) return 0;  // Ki?m tra chi?u dài
+    if (strlen(phone) > 12) return 0;  // Kiem tra chieu dai
     for (int i = 0; i < strlen(phone); i++) {
         if (!isdigit(phone[i])) {
-            return 0;  // N?u có ký t? không ph?i s?, tr? v? false
+            return 0;  // Neu co ky tu khong phai so, tra ve false
         }
     }
-    return 1;  // N?u t?t c? các ký t? d?u là s?, tr? v? true
+    return 1;  // Neu tat ca cac ky tu deu la so, tra ve true
 }
-// Ð?nh nghia m?ng users và bi?n userCount
-
+// Ðinh nghia mang users và bien userCount
 
 void cleanString(char *str) {
     for (int i = 0; str[i]; i++) {
         if (str[i] == '|') {
-            str[i] = '_';  // Thay th? ký t? '|' b?ng '_'
+            str[i] = '_';  // Thay the ky tu '|' bang '_'
         }
     }
 }
 
 void saveUserData() {
-    FILE *file = fopen("C:/prjcopy/user.txt", "w");  // M? file d? ghi
+    FILE *file = fopen("C:/prjcopy/user.txt", "w");  // Mo file de ghi
     if (!file) {
         printf("Error: Could not open file for writing.\n");
         return;
     }
 
-    // Duy?t qua t?ng ngu?i dùng trong m?ng users
+    // Duyet qua tung nguoi dung trong mang users
     for (int i = 0; i < userCount; i++) {
-        // Ghi thông tin ngu?i dùng vào file
+        // Ghi thông tin nguoi dung vao file
         fprintf(file, "USER|%s|%s|%02d-%02d-%04d|%d|%s|%s|%d|%s|%.2f|%s\n",
                 users[i].userId, users[i].name,
                 users[i].dateOfBirth.day, users[i].dateOfBirth.month, users[i].dateOfBirth.year,
@@ -66,10 +65,10 @@ void saveUserData() {
                 users[i].status, users[i].password,
                 users[i].balance, users[i].username);
 
-        // Duy?t qua l?ch s? giao d?ch c?a ngu?i dùng
+        // Duyet qua lich su giao dich caa nguoi dung
         for (int j = 0; j < 100; j++) {
             if (users[i].transactionHistory[j].amount > 0) {
-                // Ghi thông tin giao d?ch vào file
+                // Ghi thong tin giao dich vao file
                 fprintf(file, "TRANSACTION|%s|%s|%.2f|%s|%s|%02d-%02d-%04d\n",
                         users[i].transactionHistory[j].transferId,
                         users[i].transactionHistory[j].receivingId,
@@ -82,7 +81,7 @@ void saveUserData() {
             }
         }
     }
-    fclose(file);  // Ðóng file
+    fclose(file);  // Ðong file
     printf("User data saved successfully!\n");
 }
 void loadUserData() {
@@ -97,7 +96,7 @@ void loadUserData() {
     struct User tempUser;
     int transactionIndex = 0;
 
-    while (fgets(line, sizeof(line), file)) {  // Ð?m b?o có d?u ngo?c don dúng
+    while (fgets(line, sizeof(line), file)) {  // Ðam bao co dau ngoac don dung
         char type[20];
         sscanf(line, "%[^|]", type);
 
@@ -109,7 +108,7 @@ void loadUserData() {
                    &tempUser.status, tempUser.password,
                    &tempUser.balance, tempUser.username);
 
-            // Ki?m tra tính h?p l? c?a d? li?u
+            // Kiem tra tinh hop le caa du lieu
             if (!isValidUserId(tempUser.userId) || !isValidName(tempUser.name) || !isValidPhone(tempUser.phone)) {
                 printf("Invalid data found in file for user ID: %s. Skipping this user.\n", tempUser.userId);
                 continue;

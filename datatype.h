@@ -30,7 +30,7 @@ struct User {
     struct Transaction transactionHistory[100];
 };
 
-// Khai báo m?ng users và bi?n userCount là toàn c?c
+// Khai bao mang users va bien userCount la toan cuc
 extern struct User users[100];
 extern int userCount;
 
