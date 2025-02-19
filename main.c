@@ -9,15 +9,16 @@ void start(){
     int role, choice;
     while (1) {
         // Màn hình login
-        printf("\n*** BANK MANAGEMENT SYSTEM ***\n");
-        printf("============================\n");
-        printf("[1] Admin\n");
-        printf("[2] User\n");
-        printf("[0] Exit\n");
-        printf("============================\n");
-        printf("Enter Your Choice: ");
-        scanf("%d", &role);
-
+		printf("\n=================================\n");
+		printf("      BANK MANAGEMENT SYSTEM     \n");
+		printf("=================================\n");
+		printf("  [1] Admin Panel\n");
+		printf("  [2] User Services\n");
+		printf("  [0] Exit\n");
+		printf("=================================\n");
+		printf("  Enter your choice: ");
+		scanf("%d", &role);
+		
         // Kiem tra quyen truy cap
         if (role == 1) {
             char email[50], password[20];

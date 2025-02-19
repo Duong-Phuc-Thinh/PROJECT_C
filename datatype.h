@@ -17,12 +17,12 @@ struct Transaction {
 };
 
 struct User {
-    char userId[10];
-    char name[20];
+    char userId[6];
+    char name[25];
     struct Date dateOfBirth;
     bool gender;
     char phone[12];
-    char email[20];
+    char email[30];
     bool status;
     char password[20];
     float balance;

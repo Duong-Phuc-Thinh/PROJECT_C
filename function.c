@@ -371,12 +371,15 @@ void toggleUserStatus() {
 
 void sortUserList() {
     int choice;
-    printf("\n*** Sort User List ***\n");
-    printf("============================\n");
-    printf("[1] Sort by ID Ascending\n");
-    printf("[2] Sort by ID Descending\n");
-    printf("============================\n");
-    printf("Enter your choice: ");
+printf("\n");
+printf("+----------------------------+\n");
+printf("¦       *** Sort User List ***       ¦\n");
+printf("¦----------------------------¦\n");
+printf("¦ [1] Sort by ID Ascending            ¦\n");
+printf("¦ [2] Sort by ID Descending           ¦\n");
+printf("+----------------------------+\n");
+printf("\n");
+printf("Enter your choice: ");
     scanf("%d", &choice);
 
     if (choice == 1) {
